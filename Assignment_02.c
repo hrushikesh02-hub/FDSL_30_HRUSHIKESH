@@ -69,7 +69,6 @@ int main() {
     struct Student students[n]; 
 
     do {
-        // Menu options
         printf("\n--- Student Management System ---\n");
         printf("1. Insert Student Details\n");
         printf("2. Display Student Records\n");
