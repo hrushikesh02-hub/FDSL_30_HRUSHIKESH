@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 struct Employee {
     int id;
@@ -35,7 +34,7 @@ void sortByAge(struct Employee employees[], int n) {
                 employees[j] = temp;
             }
         }
-    }
+    }printf("Successfully Sorted by Age !\n");
 }
 
 void sortByID(struct Employee employees[], int n) {
@@ -47,7 +46,7 @@ void sortByID(struct Employee employees[], int n) {
                 employees[j] = temp;
             }
         }
-    }
+    }printf("Successfully Sorted by ID !\n");
 }
 
 int main() {
