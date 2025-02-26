@@ -15,14 +15,14 @@ void insertEmployees(struct Employee employees[], int n) {
         scanf(" %[^\n]", employees[i].name);
         printf("Enter Age: ");
         scanf("%f", &employees[i].age);
-    }
+    }printf("Details inserted successfully!\n");
 }
 
 void displayEmployees(struct Employee employees[], int n) {
-    printf("\n--- Employee Records ---\n");
-    printf("ID\tName\t\t\tAge\n");
+    printf("\n--- Employee Records ---\n\n");
+    printf("ID\t\tName\t\t\tAge\n");
     for (int i = 0; i < n; i++) {
-        printf("%d\t%s\t\t%.2f\n", employees[i].id, employees[i].name, employees[i].age);
+        printf("%d\t\t%s\t\t%.2f\n", employees[i].id, employees[i].name, employees[i].age);
     }
 }
 
