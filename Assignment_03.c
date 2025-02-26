@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 struct Employee {
     int id;
     char name[50];
@@ -49,8 +50,24 @@ void sortByID(struct Employee employees[], int n) {
     }printf("Successfully Sorted by ID !\n");
 }
 
+
+void sortByName(struct Employee employees[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (strcmp(employees[i].name, employees[j].name) > 0) {
+                struct Employee temp = employees[i];
+                employees[i] = employees[j];
+                employees[j] = temp;
+            }
+        }
+    }
+    printf("Successfully Sorted by Name!\n");
+}
+
+
 int main() {
     int n, choice,c;
+    
 
     printf("Enter the number of employees: ");
     scanf("%d", &n);
@@ -63,7 +80,8 @@ int main() {
         printf("2. Display Employee Records\n");
         printf("3. Sort Employees by Age\n");
         printf("4. Sort Employees by ID\n");
-        printf("5. Exit\n");
+        printf("5. Sort Employees by Name\n");
+        printf("6. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
@@ -81,7 +99,11 @@ int main() {
                 sortByID(employees, n);
                 break;
             case 5:
+                sortByName(employees,n);
+                break;
+            case 6:
                 return 0;
+                break;
             default:
                 printf("Invalid choice!\n");
         }
