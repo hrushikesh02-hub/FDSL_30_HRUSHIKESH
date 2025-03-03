@@ -184,7 +184,7 @@ int main() {
 			  break;
 		default : 
 			printf("Invalid choice !\n");
-		}printf("Do you want to continue(0/1) : ");
+		}printf("Press 1 for going to main menu(0/1) : ");
 	  	  scanf("%d",&c);
 	}
 		while(c!=0);
