@@ -1,32 +1,132 @@
 #include<stdio.h>
-int main()
-{
-	int i,j,k,n;
-	printf("Enter the number of array elements :");
-	scanf("%d",&n);
-	printf("Enter %d array elemenys",n);
-	int a[n];
-	for(i=0;i<n;i++){
-		scanf("%d",&a[i]);
-		}
-	for(i=1;i<n;i++)
-	{
-		for(j=0;j<i;j++)
+#include<string.h>
+struct Employee {
+    int id;
+    char name[50];
+    float age;
+};
+
+void insertEmployees(struct Employee employees[], int n) {
+    for (int i = 0; i < n; i++) {
+        printf("\nEnter details for Employee %d\n", i + 1);
+        printf("Enter ID: ");
+        scanf("%d", &employees[i].id);
+        printf("Enter Name: ");
+        scanf(" %[^\n]", employees[i].name);
+        printf("Enter Age: ");
+        scanf("%f", &employees[i].age);
+    }printf("Details inserted successfully!\n");
+}
+
+void displayEmployees(struct Employee employees[], int n) {
+    printf("\n--- Employee Records ---\n\n");
+    printf("ID\t\tName\t\t\tAge\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d\t\t%s\t\t%.2f\n", employees[i].id, employees[i].name, employees[i].age);
+    }
+}
+
+void sortByAge(struct Employee employees[], int n) {
+    		for( int i = 1 ; i < n ; i++ )
 		{
-			if(a[j]>a[i])
+			for( int j = 0 ; j < i ; j++)
 			{
-			int temp=a[i];
-			for(k=i-1;k>=j;k--)
-			{
-				a[k+1]=a[k];
+				if( employees[j].age >employees[i].age)
+				{
+					 struct Employee temp = employees[i];
+					for( int k = i - 1 ; k>=j  ; k-- )
+					{
+						employees[k+1] = employees[k];
+					}
+					employees[j]= temp;
+				}
 			}
-			a[j]=temp;
-     			}
-		}
-	}	
-	printf("The Sorted array is :\n");
-	for(i=0;i<n;i++){
-		printf("%d\n",a[i]);
-		}
-	return 0;
+		}printf("Sorted By Age Successfully !");
+}
+
+void sortByID(struct Employee employees[], int n) {
+	for( int i = 1 ; i < n ; i++ )
+		{
+			for( int j = 0 ; j < i ; j++)
+			{
+				if( employees[j].id > employees[i].id)
+				{
+					struct Employee temp = employees[i];
+					for( int k = i - 1 ; k>=j  ; k-- )
+					{
+						employees[k+1] = employees[k];
+					}
+					employees[j] = temp;
+				}
+			}
+		}printf("Sorted By ID Successfully !");
+}
+
+
+void sortByName(struct Employee employees[], int n) {
+	for( int i = 1 ; i < n ; i++ )
+		{
+			for( int j = 0 ; j < i ; j++)
+			{
+				if(strcmp(employees[j].name,employees[i].name)>0)
+				{
+					struct Employee temp = employees[i];
+					for( int k = i - 1 ; k>=j  ; k-- )
+					{
+						employees[k+1] = employees[k];
+					}
+					employees[j] = temp;
+				}
+			}
+		}printf("Sorted By Name Successfully !");
+}
+
+
+int main() {
+    int n, choice,c;
+    
+
+    printf("Enter the number of employees: ");
+    scanf("%d", &n);
+
+    struct Employee employees[n];
+
+    do {
+        printf("\n--- Employee Management System ---\n");
+        printf("1. Insert Employee Details\n");
+        printf("2. Display Employee Records\n");
+        printf("3. Sort Employees by Age\n");
+        printf("4. Sort Employees by ID\n");
+        printf("5. Sort Employees by Name\n");
+        printf("6. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                insertEmployees(employees, n);
+                break;
+            case 2:
+                displayEmployees(employees, n);
+                break;
+            case 3:
+                sortByAge(employees, n);
+                break;
+            case 4:
+                sortByID(employees, n);
+                break;
+            case 5:
+                sortByName(employees,n);
+                break;
+            case 6:
+                return 0;
+                break;
+            default:
+                printf("Invalid choice!\n");
+        }
+        printf("Do you want to continue (1/0) : ");
+        scanf("%d", &c);
+    } while (c != 0);
+
+    return 0;
 }
