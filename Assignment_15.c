@@ -79,6 +79,7 @@ void insertatpos()
 		{
 			prevnode=temp;
 			temp=temp->next;
+			i++;
 		}
 		newnode->next=temp;
 		temp->prev=newnode;
@@ -193,7 +194,7 @@ void main()
 	int choice;
 	while(1)
 	{
-	printf("1. Insert At first\n2. Insert At last\n3. Insert At Position\n4. Delete first\n5. Delete last\n6. Delete At Position\n7. Display\n8. Exit\nEnter your choice : ");
+	printf("\n1. Insert At first\n2. Insert At last\n3. Insert At Position\n4. Delete first\n5. Delete last\n6. Delete At Position\n7. Display\n8. Exit\nEnter your choice : ");
 	scanf("%d",&choice); 	
 	switch(choice)
 	{
